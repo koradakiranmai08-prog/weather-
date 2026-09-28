@@ -1,0 +1,10 @@
+{
+  "name": "ClimaSafe - Weather & Red Zone Hazard Alert System",
+  "description": "Real-time global weather conditions with automatic cyclone and flood Red Zone marking, severe weather tracking, and emergency safety precautions.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
