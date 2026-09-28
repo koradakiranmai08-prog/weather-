@@ -13,9 +13,36 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
   </head>
   <body class="bg-slate-950 text-slate-100 antialiased font-sans selection:bg-rose-500 selection:text-white min-h-screen">
     <div id="root"></div>
+    <script type="module">
+      import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+      
+      try {
+        createChat({
+          webhookUrl: 'https://energetic.app.n8n.cloud/webhook/d3e685db-14b7-4b6a-88f4-f135f3fa907a/chat',
+          target: '#root',
+          mode: 'window',
+          chatInputKey: 'chatInput',
+          initialMessages: [
+            'Hello! I am your ClimaSafe Weather & Disaster Assistant. How can I help you today?'
+          ],
+          i18n: {
+            en: {
+              title: 'ClimaSafe Weather Assistant',
+              subtitle: 'Real-time hazard alerts & safety intelligence',
+              footer: '',
+              getStarted: 'New Conversation',
+              inputPlaceholder: 'Type your weather question...',
+            },
+          },
+        });
+      } catch (err) {
+        console.warn('n8n chat widget initialization:', err);
+      }
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

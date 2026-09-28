@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldAlert, BookOpen, PhoneCall, RefreshCw, Compass } from 'lucide-react';
+import { ShieldAlert, BookOpen, PhoneCall, RefreshCw, Compass, Bot } from 'lucide-react';
 import { AlertLevel } from '../types/weather';
 
 interface HeaderProps {
@@ -7,6 +7,7 @@ interface HeaderProps {
   onToggleUnit: () => void;
   onOpenGuide: () => void;
   onOpenHotlines: () => void;
+  onOpenChat?: () => void;
   onRefresh: () => void;
   isRefreshing?: boolean;
   alertLevel: AlertLevel;
@@ -17,6 +18,7 @@ export const Header: React.FC<HeaderProps> = ({
   onToggleUnit,
   onOpenGuide,
   onOpenHotlines,
+  onOpenChat,
   onRefresh,
   isRefreshing = false,
   alertLevel,
@@ -96,6 +98,18 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <RefreshCw className={`w-4 h-4 ${isRefreshing ? 'animate-spin text-blue-400' : ''}`} />
           </button>
+
+          {/* AI Weather Chatbot Trigger */}
+          {onOpenChat && (
+            <button
+              onClick={onOpenChat}
+              title="Open AI Weather & Safety Chatbot"
+              className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-blue-950/60 border border-blue-500/40 hover:border-blue-500 text-xs font-semibold text-blue-300 hover:text-white transition cursor-pointer"
+            >
+              <Bot className="w-3.5 h-3.5 text-blue-400" />
+              <span className="hidden sm:inline">AI Chatbot</span>
+            </button>
+          )}
 
           {/* Emergency Hotline Button */}
           <button

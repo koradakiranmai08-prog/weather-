@@ -89,6 +89,12 @@ export interface WeatherData {
   airQuality?: AirQualityData;
 }
 
+export interface ResolutionStep {
+  step: number;
+  instruction: string;
+  actionType: 'physical' | 'equipment' | 'communication' | 'medical' | 'infrastructure';
+}
+
 export interface PrecautionItem {
   id: string;
   urgency: 'critical' | 'high' | 'medium' | 'general';
@@ -96,6 +102,8 @@ export interface PrecautionItem {
   title: string;
   description: string;
   actionRequired: boolean;
+  problemSummary?: string;
+  resolutionSteps?: ResolutionStep[];
 }
 
 export interface HazardEvaluation {

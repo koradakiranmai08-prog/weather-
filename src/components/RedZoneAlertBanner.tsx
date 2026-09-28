@@ -189,9 +189,9 @@ export const RedZoneAlertBanner: React.FC<RedZoneAlertBannerProps> = ({
         <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0 lg:min-w-[240px]">
           <button
             onClick={onScrollToPrecautions}
-            className="w-full flex items-center justify-center space-x-2 px-5 py-3.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-sm shadow-xl shadow-rose-600/40 hover:shadow-rose-600/60 transition active:scale-95"
+            className="w-full flex items-center justify-center space-x-2 px-5 py-3.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-sm shadow-xl shadow-rose-600/40 hover:shadow-rose-600/60 transition active:scale-95 cursor-pointer"
           >
-            <span>Review Life-Saving Actions</span>
+            <span>Resolve & Apply Precautions</span>
             <ArrowDown className="w-4 h-4 animate-bounce" />
           </button>
 

@@ -25,6 +25,7 @@ import { DailyForecast } from './components/DailyForecast';
 import { EmergencyGuideModal } from './components/EmergencyGuideModal';
 import { HotlinesModal } from './components/HotlinesModal';
 import { GlobalHotspotsBar } from './components/GlobalHotspotsBar';
+import { WeatherChatbot } from './components/WeatherChatbot';
 
 export default function App() {
   const [selectedLocation, setSelectedLocation] = useState<GeoLocation>(POPULAR_CITIES[1]); // Miami default
@@ -40,6 +41,7 @@ export default function App() {
   // Modals
   const [isGuideOpen, setIsGuideOpen] = useState<boolean>(false);
   const [isHotlinesOpen, setIsHotlinesOpen] = useState<boolean>(false);
+  const [isChatOpen, setIsChatOpen] = useState<boolean>(false);
 
   // Load weather
   const loadWeather = useCallback(async (location: GeoLocation, simMode?: HazardType) => {
@@ -129,6 +131,7 @@ export default function App() {
         onToggleUnit={toggleUnit}
         onOpenGuide={() => setIsGuideOpen(true)}
         onOpenHotlines={() => setIsHotlinesOpen(true)}
+        onOpenChat={() => setIsChatOpen(true)}
         onRefresh={() => loadWeather(selectedLocation, simulationMode)}
         isRefreshing={isRefreshing}
         alertLevel={hazardEvaluation?.alertLevel ?? 'safe'}
@@ -300,6 +303,15 @@ export default function App() {
           hazard={hazardEvaluation}
         />
       )}
+
+      {/* Weather AI Chatbot connected to n8n Webhook */}
+      <WeatherChatbot
+        weather={weatherData}
+        hazard={hazardEvaluation}
+        isOpen={isChatOpen}
+        onOpen={() => setIsChatOpen(true)}
+        onClose={() => setIsChatOpen(false)}
+      />
     </div>
   );
 }
